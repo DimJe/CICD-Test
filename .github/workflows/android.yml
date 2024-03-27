@@ -39,3 +39,13 @@ jobs:
        
     - name: Hello World
       run: echo "Hello World"
+
+  message:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Discord Webhook Action
+      uses: tsickert/discord-webhook@v5.3.0
+      with:
+        webhook-url: ${{ secrets.DISCRODE_SECRET }}
+        content: "Test"
+      
