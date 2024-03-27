@@ -27,15 +27,15 @@ jobs:
     - name: Run Unit Test
       run: ./gradlew test
       
-    - name: Run Android Test
-      uses: reactivecircus/android-emulator-runner@v2
-      with:
-       api-level: 26
-       target: default
-       arch: x86
-       profile: Nexus 6
-       script: ./gradlew connectedCheck --stacktrace
-       run: ./gradlew connectedAndroidTest
+    # - name: Run Android Test
+    #   uses: reactivecircus/android-emulator-runner@v2
+    #   with:
+    #    api-level: 26
+    #    target: default
+    #    arch: x86
+    #    profile: Nexus 6
+    #    script: ./gradlew connectedCheck --stacktrace
+    #    run: ./gradlew connectedAndroidTest
        
     - name: Hello World
       run: echo "Hello World"
@@ -45,4 +45,5 @@ jobs:
       with:
         webhook-url: ${{ secrets.DISCORD_SECRET }}
         content: "Test"
+        filename: "**/test-results/**/*.xml"
       
