@@ -45,5 +45,5 @@ jobs:
       with:
         webhook-url: ${{ secrets.DISCORD_SECRET }}
         content: "Test"
-        "embeds": [{"title":"Hello","description":"World"}]
+        embeds-title: "Hello"
       
