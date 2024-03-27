@@ -46,5 +46,5 @@ jobs:
         webhook-url: ${{ secrets.DISCORD_SECRET }}
         embed-title: "${{github.repository}}"
         embed-description : "World"
-        embed-url : "https://github.com/DimJe/CICD-Test/edit/master"
+        embed-url : "${{github.repositoryUrl}}"
       
