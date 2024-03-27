@@ -44,8 +44,7 @@ jobs:
       uses: tsickert/discord-webhook@v5.4.0
       with:
         webhook-url: ${{ secrets.DISCORD_SECRET }}
-        content: "Test"
-        embed-title: "Hello"
+        embed-title: "${{github.action_repository}"
         embed-description : "World"
         embed-url : "https://github.com/DimJe/CICD-Test/edit/master"
       
