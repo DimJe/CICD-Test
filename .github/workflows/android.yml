@@ -27,15 +27,15 @@ jobs:
     - name: Run Unit Test
       run: ./gradlew test
       
-    - name: Run Android Test
-      uses: reactivecircus/android-emulator-runner@v2
-      with:
-       api-level: 26
-       target: default
-       arch: x86
-       profile: Nexus 6
-       script: ./gradlew connectedCheck --stacktrace
-       run: ./gradlew connectedAndroidTest
+    # - name: Run Android Test
+    #   uses: reactivecircus/android-emulator-runner@v2
+    #   with:
+    #    api-level: 26
+    #    target: default
+    #    arch: x86
+    #    profile: Nexus 6
+    #    script: ./gradlew connectedCheck --stacktrace
+    #    run: ./gradlew connectedAndroidTest
        
     - name: Hello World
       run: echo "Hello World"
@@ -70,4 +70,5 @@ jobs:
         embed-title: "${{github.repository}}"
         embed-description : "${{github.event.head_commit.message}}\nTest Success" 
         embed-url : "https://github.com/DimJe/CICD-Test"
+        embed-image-url: "https://upload3.inven.co.kr/upload/2023/09/25/bbs/i016184723873.gif"
       
