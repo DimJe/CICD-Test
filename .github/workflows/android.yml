@@ -43,7 +43,7 @@ jobs:
   fail_Msg:
     name: Fail Discord Msg
     needs: [build]
-    if: needs.build.result == 'failure'
+    if: always() && needs.build.result == 'failure'
     runs-on: ubuntu-latest
 
     steps:
@@ -54,7 +54,7 @@ jobs:
         embed-title: "${{github.repository}}"
         embed-description : "${{github.event.head_commit.message}} \n Test Fail"
         embed-url : "https://github.com/DimJe/CICD-Test"
-
+        embed-image-url : "https://upload3.inven.co.kr/upload/2023/09/25/bbs/i016109978763.gif"
 
   success_Msg:
     name: Success Discord Msg
