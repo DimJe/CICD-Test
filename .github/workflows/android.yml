@@ -43,7 +43,7 @@ jobs:
   fail_Msg:
     name: Fail Discord Msg
     needs: [build]
-    if: needs.build.result == 'failure'
+    if: always() && needs.build.result == 'failure'
     runs-on: ubuntu-latest
 
     steps:
