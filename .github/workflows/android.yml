@@ -43,7 +43,7 @@ jobs:
   fail_Msg:
     name: Fail Discord Msg
     needs: [build]
-    if: needs.build.result == "failure"
+    if: needs.build.result == 'failure'
     runs-on: ubuntu-latest
 
     steps:
@@ -59,7 +59,7 @@ jobs:
   success_Msg:
     name: Success Discord Msg
     needs: [build]
-    if: needs.build.result == "success"
+    if: needs.build.result == 'success'
     runs-on: ubuntu-latest
 
     steps:
