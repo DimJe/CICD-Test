@@ -71,4 +71,19 @@ jobs:
         embed-description : "${{github.event.head_commit.message}}\nTest Success" 
         embed-url : "https://github.com/DimJe/CICD-Test"
         embed-image-url: "https://upload3.inven.co.kr/upload/2023/09/25/bbs/i016184723873.gif"
+
+  create_pr:
+    name: Create Pull Request
+    needs: [success_Msg]
+    if: needs.success_Msg.result == 'success'
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Create PR
+      uses: thomaseizinger/create-pull-request@master
+      with:
+        github_token: ${{ secrets.TOKEN }}
+        head: ${{ github.ref }}
+        base: release
+        title: "${{github.event.head_commit.message}}"
       
