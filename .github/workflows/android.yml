@@ -79,6 +79,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v3
     - name: Create PR
       uses: thomaseizinger/create-pull-request@master
       with:
