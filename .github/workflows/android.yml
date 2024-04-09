@@ -64,15 +64,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Discord Webhook Action
-      uses: tsickert/discord-webhook@v5.4.0
-      with:
-        webhook-url: ${{ secrets.DISCORD_SECRET }}
-        embed-title: "${{github.repository}}"
-        embed-description : "${{github.event.head_commit.message}}\nTest Success" 
-        embed-url : "https://github.com/DimJe/CICD-Test"
-        embed-image-url: "https://upload3.inven.co.kr/upload/2023/09/25/bbs/i016184723873.gif"
-
+  
     - name: set up JDK 17
       uses: actions/setup-java@v3
       with:
@@ -87,7 +79,17 @@ jobs:
       with:
         name: Test-Debug
         path: app/build/outputs/apk/debug/app-debug.apk
-            
+        
+    - name: Discord Webhook Action
+      uses: tsickert/discord-webhook@v5.4.0
+      with:
+        webhook-url: ${{ secrets.DISCORD_SECRET }}
+        embed-title: "${{github.repository}}"
+        embed-description : "${{github.event.head_commit.message}}\nTest Success" 
+        embed-url : "https://github.com/DimJe/CICD-Test"
+        embed-image-url: "https://upload3.inven.co.kr/upload/2023/09/25/bbs/i016184723873.gif"
+        filename: app/build/outputs/apk/debug/app-debug.apk
+
 
   create_pr:
     name: Create Pull Request
