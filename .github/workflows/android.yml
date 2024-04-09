@@ -63,6 +63,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v3
     - name: Discord Webhook Action
       uses: tsickert/discord-webhook@v5.4.0
       with:
@@ -71,6 +72,14 @@ jobs:
         embed-description : "${{github.event.head_commit.message}}\nTest Success" 
         embed-url : "https://github.com/DimJe/CICD-Test"
         embed-image-url: "https://upload3.inven.co.kr/upload/2023/09/25/bbs/i016184723873.gif"
+    - name: Build Apk
+      run: bash ./gradlew assembleDebug --stacktrace
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: Test-Debug
+        path: app/build/outputs/apk/debug/app-debug.apk
+            
 
   create_pr:
     name: Create Pull Request
