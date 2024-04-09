@@ -72,6 +72,14 @@ jobs:
         embed-description : "${{github.event.head_commit.message}}\nTest Success" 
         embed-url : "https://github.com/DimJe/CICD-Test"
         embed-image-url: "https://upload3.inven.co.kr/upload/2023/09/25/bbs/i016184723873.gif"
+
+    - name: set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: gradle
+        
     - name: Build Apk
       run: bash ./gradlew assembleDebug --stacktrace
     - name: Upload a Build Artifact
