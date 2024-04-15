@@ -72,14 +72,14 @@ jobs:
         distribution: 'temurin'
         cache: gradle
         
-    # - name: Build Apk
-    #   run: bash ./gradlew assembleDebug --stacktrace
+    - name: Build Apk
+      run: bash ./gradlew assembleRelease --stacktrace
     - uses: r0adkll/sign-android-release@v1
       name: Sign app APK
     # ID used to access action output
       id: sign_app
       with:
-        releaseDirectory: app/build/outputs/apk/debug
+        releaseDirectory: app/build/outputs/apk/release
         signingKeyBase64: ${{ secrets.KEY_BASE64 }}
         alias: ${{ secrets.KEY_ALIAS }}
         keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
