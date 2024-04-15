@@ -1,4 +1,4 @@
-name: Android CI
+ㅍname: Android CI
 
 on:
   push:
@@ -79,7 +79,7 @@ jobs:
     # ID used to access action output
       id: sign_app
       with:
-        releaseDirectory: app/release
+        releaseDirectory: app/build/outputs/apk/debug
         signingKeyBase64: ${{ secrets.KEY_BASE64 }}
         alias: ${{ secrets.KEY_ALIAS }}
         keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
