@@ -72,13 +72,26 @@ jobs:
         distribution: 'temurin'
         cache: gradle
         
-    - name: Build Apk
-      run: bash ./gradlew assembleDebug --stacktrace
+    # - name: Build Apk
+    #   run: bash ./gradlew assembleDebug --stacktrace
+    - uses: r0adkll/sign-android-release@v1
+      name: Sign app APK
+    # ID used to access action output
+      id: sign_app
+      with:
+        releaseDirectory: app/build/outputs/apk/release
+        signingKeyBase64: ${{ secrets.KEY_BASE64 }}
+        alias: ${{ secrets.KEY_ALIAS }}
+        keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
+        keyPassword: ${{ secrets.KEY_PASSWORD }}
+
+  # Example use of `signedReleaseFile` output -- not needed
+    
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: Test-Debug
-        path: app/build/outputs/apk/debug/app-debug.apk
+        name: Signed app bundle
+        path: ${{steps.sign_app.outputs.signedReleaseFile}}
         
     - name: Discord Webhook Action
       uses: tsickert/discord-webhook@v5.4.0
