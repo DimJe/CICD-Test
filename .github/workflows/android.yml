@@ -54,7 +54,6 @@ jobs:
         embed-title: "${{github.repository}}"
         embed-description : "${{github.event.head_commit.message}} \n Test Fail"
         embed-url : "https://github.com/DimJe/CICD-Test"
-        embed-image-url : "https://upload3.inven.co.kr/upload/2023/09/25/bbs/i016109978763.gif"
 
   success_Msg:
     name: Success Discord Msg
@@ -102,7 +101,6 @@ jobs:
         embed-title: "${{github.repository}}"
         embed-description : "${{github.event.head_commit.message}}\nTest Success" 
         embed-url : "https://github.com/DimJe/CICD-Test"
-        embed-image-url: "https://upload3.inven.co.kr/upload/2023/09/25/bbs/i016184723873.gif"
         filename: ${{steps.sign_app.outputs.signedReleaseFile}}
 
 
